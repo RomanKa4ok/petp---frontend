@@ -1,33 +1,42 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                },
-            },
-        ],
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './public/index.html', // assuming you have an HTML template in the public folder
-        }),
-    ],
-    devServer: {
-        static: {
-            directory: path.join(__dirname, 'dist'),
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
         },
-        port: 3000,
-        open: true,
+      },
+    ],
+  },
+  plugins: [
+    new ESLintPlugin({
+      context: path.resolve(__dirname, 'src'), // Adjust the path as needed
+      extensions: ['js', 'jsx'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+    }),
+  ],
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'dist'),
     },
+    port: 3000,
+    historyApiFallback: true,
+    open: true,
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'] // automatically resolves ext while imports
+  }
 };
