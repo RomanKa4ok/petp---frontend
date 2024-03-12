@@ -1,0 +1,62 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+      // Specify the version of React (or "detect" to automatically detect the version)
+    }
+  },
+  "rules": {
+    "semi": "error",
+    "no-unused-vars": "off",
+    "indent": [
+      "error",
+      2
+    ],
+    "prefer-const": "error",
+    "no-trailing-spaces": "error",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/jsx-curly-brace-presence": [
+      "error",
+      {
+        "props": "always",
+        "children": "ignore"
+      }
+    ],
+    "react/jsx-fragments": [
+      "error",
+      "syntax"
+    ],
+    "react/prop-types": "error",
+    "react/react-in-jsx-scope": "error",
+    "react/no-unescaped-entities": "error",
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["**/*.js", "**/*.jsx"],
+    }
+  ]
+}
