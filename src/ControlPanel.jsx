@@ -4,7 +4,7 @@ import {
   createTheme,
   ThemeProvider,
 } from "@mui/material";
-import { Sidebar } from "./components/Sidebar";
+import { Sidebar } from "./components/Sidebar/Sidebar";
 import { green, purple } from "@mui/material/colors";
 
 export const ControlPanel = () => {
@@ -19,13 +19,13 @@ export const ControlPanel = () => {
     },
   });
 
-  return <div>
-    <h2>dashboard</h2>
-
-    <ThemeProvider theme={theme}>
-      <Sidebar></Sidebar>
-      <Outlet></Outlet>
-    </ThemeProvider>
-
-  </div>;
+  return(
+    <div>
+      <h2>dashboard</h2>
+      <ThemeProvider theme={theme}>
+        <Sidebar></Sidebar>
+        <Outlet></Outlet>
+      </ThemeProvider>
+    </div>
+  );
 };
