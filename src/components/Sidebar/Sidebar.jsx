@@ -1,9 +1,12 @@
 import { Button, Divider, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import React, { useState } from "react";
-import { SYSTEM_COLORS } from '../constants/styles';
+import { SYSTEM_COLORS } from '../../constants/styles';
+import useStyles from './styles';
 
 export const Sidebar = () => {
   const drawerWidth = 240;
+
+  const classes = useStyles();
 
   const [mobileOpen, setMobileOpen] = useState(true);
   const [isClosing, setIsClosing] = useState(false);
@@ -15,12 +18,6 @@ export const Sidebar = () => {
 
   const handleDrawerTransitionEnd = () => {
     setIsClosing(false);
-  };
-
-  const handleDrawerToggle = () => {
-    if (!isClosing) {
-      setMobileOpen(!mobileOpen);
-    }
   };
 
   const meny = ['Profile', 'Settings'];
